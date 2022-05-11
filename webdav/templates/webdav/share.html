@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load dav_tags %}
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block html_class %}{% endblock %}
+{% block content %}
+  <section class="section" >
+    <div class="container" style="max-width:480px;">
+      <h1 class="title">{{object.resource|clean_name}}</h1>
+      <div class="content">
+	<p>大小: {{object.get_resource.size|filesizeformat}}</p>
+      </div>
+      <a href="{{object.get_resource_url}}" class="button is-primary">下载</a>
+    </div>
+  </section>
+{% endblock %}

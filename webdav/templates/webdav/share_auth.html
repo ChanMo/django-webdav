@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block html_class %}{% endblock %}
+{% block content %}
+  <section class="section" >
+    <div class="container" style="max-width:480px">
+      <h1 class="title">请输入访问密码</h1>
+      <form method="post" >
+	{% csrf_token %}
+	{% include "form_snippet.html" %}
+	<div class="field mt-5" >
+	  <button type="submit" class="button is-primary" >提 交</button>
+	</div>
+      </form>
+    </div>
+  </section>
+{% endblock %}

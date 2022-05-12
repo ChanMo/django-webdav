@@ -12,26 +12,27 @@ export default function FilePreview({file}) {
       <Box sx={{display:'flex',justifyContent:'center'}}>
         <Box 
           component="img" 
-          src={`/api/${window.root}/webdav/preview/?uri=${file[1]}`}
+          src={`/api/webdav/preview/?uri=${file[1]}`}
+          sx={{maxWidth:'100%'}}
         />
       </Box>
     )
   } else if (file[5].match('^audio\/')) {
     return (
       <audio controls>
-        <source src={`/api/${window.root}/webdav/preview/?uri=${file[1]}`} />
+        <source src={`/api/webdav/preview/?uri=${file[1]}`} />
       </audio>
     )
   } else if (file[5].match('^video\/')) {
     return (
       <video controls>
-        <source src={`/api/${window.root}/webdav/preview/?uri=${file[1]}`} />
+        <source src={`/api/webdav/preview/?uri=${file[1]}`} />
       </video>
     )
   } else if (file[1].match('\.h5$')) {
     const [data, setData] = useState({})
     const fetchData = async() => {
-      const url = `/api/${window.root}/webdav/preview/?uri=${file[1]}`
+      const url = `/api/webdav/preview/?uri=${file[1]}`
       const res = await fetch(url)
       const resJson = await res.json()
       setData(resJson)
@@ -45,7 +46,7 @@ export default function FilePreview({file}) {
   } else if (file[5] === 'application/json') {
     const [data, setData] = useState('')
     const fetchData = async() => {
-      const url = `/api/${window.root}/webdav/preview/?uri=${file[1]}`
+      const url = `/api/webdav/preview/?uri=${file[1]}`
       const res = await fetch(url)
       const resText = await res.text()
       setData(resText)

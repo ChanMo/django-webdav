@@ -1,12 +1,6 @@
-{% extends "base.html" %}
-{% load utils_tags %}
-{% block html_class %}{% endblock %}
-{% block body_class %}has-background-light{% endblock %}
-{% block navbar %}{% endblock %}
-{% block footer %}{% endblock %}
-{% block content %}
-{% endblock %}
+{% extends "webdav/base.html" %}
+{% load react_tags %}
 {% block extra_js %}
-  {% include "react_props.html" %}
-  {% manifest_static "backend/webdav/components/webdav.jsx" %}
+  {% include "react/react_props.html" %}
+  {% react_static "components/webdav.jsx" %}
 {% endblock %}

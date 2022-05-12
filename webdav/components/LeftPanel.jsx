@@ -23,7 +23,7 @@ function LeftPanel(props) {
   const [data, setData] = useState([])
 
   const fetchData = async () => {
-    const url = `/api/${window.root}/webdav/tree/`
+    const url = `/api/webdav/tree/`
     try {
       const res = await fetch(url)
       if(!res.ok) {
@@ -43,22 +43,18 @@ function LeftPanel(props) {
   const handleSelect = (event, nodeId) => {
     let id = parseInt(nodeId)
     let res = data
-    if(id === 0) {
-      res = data[0]
-    } else {
-      let level = parseInt(Math.log(id) / Math.log(100))
-      while (level >= 0) {
-        let index = id
-        if (level > 0) {
-          index = parseInt(id / Math.pow(100, level))
-        }
-        id = id % Math.pow(100, level)
-        level -= 1
-        if (Array.isArray(res)) {
-          res = res[index]
-        } else {
-          res = res.children[index-1]
-        }
+    let level = parseInt(Math.log(id) / Math.log(100))
+    while (level >= 0) {
+      let index = id
+      if (level > 0) {
+        index = parseInt(id / Math.pow(100, level))
+      }
+      id = id % Math.pow(100, level)
+      level -= 1
+      if (Array.isArray(res)) {
+        res = res[index-1]
+      } else {
+        res = res.children[index-1]
       }
     }
     return setDir(res.path)
@@ -91,7 +87,7 @@ function LeftPanel(props) {
         defaultExpandIcon={<ChevronRightIcon />}
         onNodeSelect={handleSelect}
       >
-        {data.map((node, index) => renderTree(node, index))}
+        {data.map((node, index) => renderTree(node, index+1))}
       </TreeView>
     </Box>
   )

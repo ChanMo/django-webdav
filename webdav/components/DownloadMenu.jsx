@@ -11,7 +11,7 @@ export default function DownloadMenu({file}) {
   }
 
   const handleClick = () => {
-    window.location.href = `/api/${window.root}/webdav/open/?uri=${file[1]}`
+    window.location.href = `/api/webdav/open/?uri=${file[1]}`
   }
 
   return (

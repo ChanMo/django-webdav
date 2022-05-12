@@ -1,6 +1,6 @@
 import re
 import os
-import h5py
+# import h5py
 from django.conf import settings
 from django.core.files.images import ImageFile
 from django.urls import path
@@ -76,8 +76,9 @@ class ShareLinkViewSet(ModelViewSet):
 
 
 def build_uri(uri, request=None, kwargs=None):
-    pk = kwargs.get('pk')
-    return f'/{pk}{uri}'.replace('//', '/')
+    # pk = kwargs.get('pk')
+    # return f'/{pk}{uri}'.replace('//', '/')
+    return f'/{uri}'.replace('//', '/')
 
 
 @api_view()
@@ -206,16 +207,16 @@ def preview_view(request, **kwargs):
             content_type=info.contenttype,
             headers={'Content-Disposition': f'attachment;filename="{filename}"'}
         )
-    elif re.match(r'.*\.h5$', filename):
-        localpath = settings.BASE_DIR / f'dav/data{uri}'
-        f = h5py.File(localpath, 'r')
-        res = {}
-        for key in f.keys():
-            res2 = {}
-            for k2 in f[key].keys():
-                res2.update({k2: f[key][k2].shape})
-            res.update({key:res2})
-        return JsonResponse(res)
+    # elif re.match(r'.*\.h5$', filename):
+    #     localpath = settings.BASE_DIR / f'dav/data{uri}'
+    #     f = h5py.File(localpath, 'r')
+    #     res = {}
+    #     for key in f.keys():
+    #         res2 = {}
+    #         for k2 in f[key].keys():
+    #             res2.update({k2: f[key][k2].shape})
+    #         res.update({key:res2})
+    #     return JsonResponse(res)
 
     return HttpResponse('不可预览')
 

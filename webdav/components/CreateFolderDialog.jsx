@@ -27,7 +27,7 @@ export default function CreateFolderDialog({ open, onClose }) {
   }, [open])
 
   const handleSubmit = async (direction, forceRefresh) => {
-    const url = `/api/${window.root}/webdav/mkdir/`
+    const url = `/api/webdav/mkdir/`
     try {
       const res = await fetch(url, {
         method: 'POST',

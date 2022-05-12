@@ -41,7 +41,7 @@ export default function RenameDialog({file, open, onSuccess, onClose}) {
 
 
   const handleSubmit = async (directory, forceRefresh) => {
-    const url = `/api/${window.root}/webdav/move/`
+    const url = `/api/webdav/move/`
     try {
       const res = await fetch(url, {
         method: "POST",

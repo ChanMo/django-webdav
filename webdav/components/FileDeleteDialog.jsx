@@ -11,7 +11,7 @@ import { DirectoryContext } from './directory-context'
 export default function FileDeleteDialog(props) {
   const { file, open, onClose, onDelete } = props
   const handleSubmit = async (forceRefresh) => {
-    const url = `/api/${window.root}/webdav/delete/`
+    const url = `/api/webdav/delete/`
     try {
       const res = await fetch(url, {
         method: "DELETE",

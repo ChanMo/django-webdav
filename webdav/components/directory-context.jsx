@@ -7,11 +7,14 @@ export const DirectoryContext = React.createContext({
   forceRefresh: () => {}
 })
 
-export default function DirectoryProvider({ children }) {
-  const [current, setCurrent] = useState('/');
+export default function DirectoryProvider({ initial='/', children }) {
+  const [current, setCurrent] = useState(initial);
   const [refreshCount, setRefreshCount] = useState(0)
   const setDir = (newValue) => {
     setCurrent(newValue)
+    //window.location.search = '?dir=' + newValue
+    //FIXME 返回键无效果
+    window.history.pushState({}, '', window.location.pathname + '?dir=' + newValue)
   }
   const forceRefresh = () => {
     setRefreshCount(refreshCount + 1)

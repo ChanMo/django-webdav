@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from accounts.serializers import BaseUserSerializer
+# from accounts.serializers import BaseUserSerializer
 from .models import Activity, Comment, ShareLink
 from .utils import build_uri
 
@@ -11,7 +11,11 @@ class ActivitySerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)
-        ret['user'] = BaseUserSerializer(instance.user).data
+        # ret['user'] = BaseUserSerializer(instance.user).data
+        ret['user'] = {
+            'id': instance.user.id,
+            'username': instance.user.username
+        }
         return ret
 
 
@@ -43,7 +47,12 @@ class CommentSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)
-        ret['user'] = BaseUserSerializer(instance.user).data
+        # ret['user'] = BaseUserSerializer(instance.user).data
+        ret['user'] = {
+            'id': instance.user.id,
+            'username': instance.user.username
+        }
+
         return ret
 
 
@@ -59,8 +68,9 @@ class ShareLinkSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)
-        site = self.context['request'].site
-        ret['link'] = f'http://{site.domain}/share/{instance.uuid}/'
+        # site = self.context['request'].site
+        ret['link'] = f'/share/{instance.uuid}/'
+
         return ret
 
     def save(self, **kwargs):

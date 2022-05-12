@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, CardContent, Typography, Stack, Button, Box, OutlinedInput } from '@mui/material'
 import Cookies from 'js-cookie'
-import Empty from '../../components/Empty'
+//import Empty from '../../components/Empty'
 import CommentLine from './CommentLine'
 
 
@@ -14,7 +14,7 @@ export default function CommentBox({resource}) {
   }, [resource])
 
   const fetchData = async () => {
-    const url = `/api/${window.root}/webdav/comment/?resource=${resource}`
+    const url = `/api/webdav/comment/?resource=${resource}`
     try {
       const res = await fetch(url)
       if(!res.ok) {
@@ -34,7 +34,7 @@ export default function CommentBox({resource}) {
   }
 
   const handleSubmit = async () => {
-    const url = `/api/${window.root}/webdav/comment/`
+    const url = `/api/webdav/comment/`
     try {
       const res = await fetch(url, {
         method: 'POST',
@@ -88,7 +88,7 @@ export default function CommentBox({resource}) {
             sx={{mb:1}}
           />
         ) : (
-          <Empty text='暂无评论'></Empty>
+          <Typography>Empty</Typography>
         )}
       </Box>
       {renderForm()}

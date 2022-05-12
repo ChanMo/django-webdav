@@ -26,7 +26,7 @@ function FilesTable({refreshCount, current}) {
   }, [current, refreshCount])
 
   const fetchData = async () => {
-    const url = `/api/${window.root}/webdav/?dir=${current}`
+    const url = `/api/webdav/?dir=${current}`
     const res = await fetch(url)
     const resJson = await res.json()
     setData(resJson)
@@ -38,7 +38,7 @@ function FilesTable({refreshCount, current}) {
 
   return (
     <Table>
-      <TableHead sx={{position:'sticky',top:'153px',bgcolor:'white',zIndex:9}}>
+      <TableHead sx={{position:'sticky',top:153,bgcolor:'white',zIndex:9}}>
         <TableRow>
           <TableCell>名称</TableCell>
           <TableCell>大小</TableCell>

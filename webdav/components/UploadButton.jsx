@@ -10,7 +10,7 @@ export default function UploadButton() {
   const handleUpload = async (event, directory, forceRefresh) => {
     const f = event.target.files[0]
     //setMsg(`${f.name}上传中`)
-    const url = `/api/${window.root}/webdav/upload/`
+    const url = `/api/webdav/upload/`
     let formData = new FormData()
     formData.append('file', f)
     formData.append('uri', directory)

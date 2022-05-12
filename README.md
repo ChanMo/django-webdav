@@ -17,6 +17,7 @@ File Manager like dropbox
 * Django
 * djangorestframework
 * sorl-thumbnail
+* requests
 * Webdav
 * React + Vite
 * @mui/material

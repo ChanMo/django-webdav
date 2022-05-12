@@ -4,6 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
+from react.mixins import ReactMixin
 from .models import ShareLink
 from .forms import ShareAuthForm
 from . import get_webdav_client
@@ -36,19 +39,12 @@ def share_auth_view(request, pk):
     return render(request, 'webdav/share_auth.html', {'form':form})
 
 
-@login_required
-def index_view(request, org_slug, pk, **kwargs):
-    from projects.models import Project
-    from project.serializers import ProjectSerializer
-    obj = get_object_or_404(Project, pk=pk)
-    context = {
-        'props': {
-            'project': ProjectSerializer(obj).data,
-            'root': f'@{org_slug}/{pk}'
+class IndexView(LoginRequiredMixin, ReactMixin, TemplateView):
+    template_name = 'webdav/index.html'
+    def get_props_data(self):
+        return {
+            'current': self.request.GET.get('dir', '/')
         }
-    }
-    return render(request, 'webdav/index.html', context)
-
 
 
 @login_required

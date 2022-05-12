@@ -23,7 +23,7 @@ export default function PreviewDialog({file, open, onClose}) {
       <DialogTitle>{pathname(file[1])}</DialogTitle>
       <DialogContent>
         <Grid container spacing={2}>
-          <Grid item xs>
+          <Grid item xs={8}>
             <FilePreview file={file} />
           </Grid>
           <Grid item xs={4}>

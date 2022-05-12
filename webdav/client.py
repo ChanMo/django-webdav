@@ -66,10 +66,11 @@ def without_root(uri, skip=1):
     if not skip:
         return uri
 
-    uri_list = uri.split('/')
-    if len(uri_list) > 2:
-        del uri_list[1]
-    return '/'.join(uri_list)
+    #uri_list = uri.split('/')
+    #if len(uri_list) > 2:
+    #    del uri_list[1]
+    #return '/'.join(uri_list)
+    return uri
 
 
 def elem2file(elem, skip=1):

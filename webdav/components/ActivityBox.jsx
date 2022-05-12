@@ -3,7 +3,8 @@
  */
 import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
-import Empty from '../../components/Empty'
+import Typography from '@mui/material/Typography'
+//import Empty from '../../components/Empty'
 import ActivityLine from './ActivityLine'
 
 
@@ -15,14 +16,14 @@ export default function ActivityBox({resource}) {
   }, [resource])
 
   const fetchData = async () => {
-    const url = `/api/${window.root}/webdav/activity/?resource=${resource}`
+    const url = `/api/webdav/activity/?resource=${resource}`
     const res = await fetch(url)
     const resJson = await res.json()
     setData(resJson.results)
   }
 
   if (data.length <= 0) {
-    return <Empty />
+    return <Typography>Empty</Typography>
   }
 
   return (

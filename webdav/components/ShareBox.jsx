@@ -16,7 +16,7 @@ export default function ShareBox({resource, ...props}) {
   }, [resource])
 
   const fetchData = async() => {
-    const url = `/api/${window.root}/webdav/sharelink/?resource=${resource}`
+    const url = `/api/webdav/sharelink/?resource=${resource}`
     const res = await fetch(url)
     const resJson = await res.json()
     if(resJson.count) {
@@ -33,7 +33,7 @@ export default function ShareBox({resource, ...props}) {
 
   const handleSubmit = async() => {
     if(data) {
-      const url = `/api/${window.root}/webdav/sharelink/${data.uuid}/?resource=${resource}`
+      const url = `/api/webdav/sharelink/${data.uuid}/?resource=${resource}`
       try {
         const res = await fetch(url, {
           method: 'PATCH',
@@ -47,7 +47,7 @@ export default function ShareBox({resource, ...props}) {
         console.error(err)
       }
     } else {
-      const url = `/api/${window.root}/webdav/sharelink/`
+      const url = `/api/webdav/sharelink/`
       try {
         const res = await fetch(url, {
           method: 'POST',
@@ -68,7 +68,7 @@ export default function ShareBox({resource, ...props}) {
   }
 
   const handleDelete = async() => {
-    const url = `/api/${window.root}/webdav/sharelink/${data.uuid}/?resource=${resource}`
+    const url = `/api/webdav/sharelink/${data.uuid}/?resource=${resource}`
     try {
       const res = await fetch(url, {
         method: 'DELETE',

@@ -68,4 +68,12 @@ $ ./manage.py migrate
 
 ## Todo
 
+* [ ] 排序
+* [ ] 搜索
 * [ ] Permission Controls
+* [ ] 收藏
+* [ ] 最近
+* [ ] 共享
+* [ ] 标签
+* [ ] Grid Display
+* [ ] 批量操作

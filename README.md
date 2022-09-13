@@ -77,3 +77,4 @@ $ ./manage.py migrate
 * [ ] 标签
 * [ ] Grid Display
 * [ ] 批量操作
+* [ ] 移动文件

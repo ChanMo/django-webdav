@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-demo/
+# demo/
 
 node_modules/
 webdav/migrations/*

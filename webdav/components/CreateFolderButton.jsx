@@ -1,4 +1,4 @@
-import React, { useState } from 'react' 
+import React, { useState } from 'react'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add';
 import CreateFolderDialog from './CreateFolderDialog'
@@ -17,10 +17,10 @@ export default function CreateFolderButton() {
       <Button
         onClick={handleClick}
         startIcon={<AddIcon />}
-        variant="outlined">
-        创建目录
-      </Button>
-      <CreateFolderDialog 
+        component="span"
+        variant="outlined"
+      >创建目录</Button>
+      <CreateFolderDialog
         open={open}
         onClose={handleClose}
       />

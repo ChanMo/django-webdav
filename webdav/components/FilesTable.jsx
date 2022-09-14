@@ -18,14 +18,18 @@ import FileActions from './FileActions'
 import { DirectoryContext } from './directory-context'
 import { formatBytes } from './utils'
 import { Box } from '@mui/system'
-import { Grid } from '@mui/material'
+import { Checkbox, Grid } from '@mui/material'
+import { BatchContext } from './context/batch'
 
 
-function FilesTable({ refreshCount, current, rank }) {
+function FilesTable({ refreshCount, current, rank, list, changeList }) {
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData()
   }, [current, refreshCount])
+  useEffect(() => {
+    changeList([])
+  }, [current])
 
   const fetchData = async () => {
     const url = `/api/webdav/?dir=${current}`
@@ -37,10 +41,29 @@ function FilesTable({ refreshCount, current, rank }) {
   if (data.length <= 1) {
     return <Typography sx={{ py: 6, textAlign: 'center' }}>empty.</Typography>
   }
+  const checkItem = (item) => {
+    let result = []
+    if (list.some(e => e === item[1])) {
+      result = list.filter((row) => row !== item[1])
+    } else {
+      result = list.concat(item[1])
+    }
+    changeList(result)
+  }
+  const checkAll = () => {
+    if (list.length !== data.slice(1).length) {
+      changeList(data.slice(1).map((e) => e[1]))
+    } else {
+      changeList([])
+    }
+  }
   const renderTable = () => (
     <Table>
       <TableHead sx={{ position: 'sticky', top: 153, bgcolor: 'white', zIndex: 9 }}>
         <TableRow>
+          <TableCell sx={{ p: 0 }}><Checkbox
+            checked={list.length == data.slice(1).length}
+            onClick={checkAll} /></TableCell>
           <TableCell>名称</TableCell>
           <TableCell>大小</TableCell>
           <TableCell>最后修改时间</TableCell>
@@ -50,6 +73,11 @@ function FilesTable({ refreshCount, current, rank }) {
       <TableBody>
         {data.slice(1).map((row, index) => (
           <TableRow hover key={index.toString()}>
+            <TableCell sx={{ p: 0 }}>
+              <Checkbox
+                checked={list.some(e => e === row[1])}
+                onClick={() => checkItem(row)} />
+            </TableCell>
             <TableCell sx={{ p: 0 }}>
               <FileName file={row} />
             </TableCell>
@@ -78,10 +106,16 @@ function FilesTable({ refreshCount, current, rank }) {
               top: 2,
               borderRadius: '50%'
             },
+            '.checkitem': {
+              position: 'absolute',
+              left: 2,
+              top: 2,
+              borderRadius: '50%'
+            },
             '&:hover': {
               div: {
                 bgcolor: '#f1f1f1',
-                '.actions': { display: 'inline-flex' }
+                '.actions': { display: 'inline-flex' },
               },
             }
           }} >
@@ -91,6 +125,11 @@ function FilesTable({ refreshCount, current, rank }) {
               <FileName file={row} direction={'column'} iconSize={75} />
               <Box className='actions'>
                 <FileActions file={row} />
+              </Box>
+              <Box className='checkitem'>
+                <Checkbox
+                  checked={list.some(e => e === row[1])}
+                  onClick={() => checkItem(row)} />
               </Box>
             </Box>
           </Box>
@@ -109,8 +148,14 @@ function FilesTable({ refreshCount, current, rank }) {
 
 export default ({ rank }) => (
   <DirectoryContext.Consumer>
-    {(context) => (
-      <FilesTable {...context} rank={rank} />
+    {(directoryContext) => (
+      <BatchContext.Consumer>
+        {(batchContext) => {
+          return (
+            <FilesTable {...directoryContext} {...batchContext} rank={rank} />
+          )
+        }}
+      </BatchContext.Consumer>
     )}
   </DirectoryContext.Consumer>
 )

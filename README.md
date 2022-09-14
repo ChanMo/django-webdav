@@ -75,6 +75,6 @@ $ ./manage.py migrate
 * [ ] 最近
 * [ ] 共享
 * [ ] 标签
-* [ ] Grid Display
+* [✓] Grid Display
 * [ ] 批量操作
 * [ ] 移动文件

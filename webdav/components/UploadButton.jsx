@@ -30,7 +30,7 @@ export default function UploadButton() {
 
   return (
     <DirectoryContext.Consumer>
-      {({current, forceRefresh}) => (
+      {({ current, forceRefresh }) => (
         <label htmlFor="upload-file">
           <Input
             onChange={(event) => handleUpload(event, current, forceRefresh)}

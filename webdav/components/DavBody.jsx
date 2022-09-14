@@ -12,10 +12,11 @@ import TableRowsIcon from '@mui/icons-material/TableRows';
 import GridViewIcon from '@mui/icons-material/GridView';
 import { DirectoryContext } from './directory-context'
 import { ToggleButton, ToggleButtonGroup } from '@mui/material'
+import BatchButton from './BatchButton'
 
 
 export default function DavBody() {
-  const [rank, setRank] = useState('grid')
+  const [rank, setRank] = useState('table')
   return (
     <DirectoryContext.Consumer>
       {({ current }) => (
@@ -25,10 +26,12 @@ export default function DavBody() {
             <Stack spacing={1} direction='row' sx={{ pb: 1 }}>
               <UploadButton />
               <CreateFolderButton />
+              <BatchButton />
               <Box sx={{ flex: 1 }}></Box>
               <ToggleButtonGroup
                 size='small'
                 value={rank}
+                sx={{ 'button': { p: '5px' } }}
                 onChange={e => {
                   setRank(e.currentTarget.value)
                 }}>

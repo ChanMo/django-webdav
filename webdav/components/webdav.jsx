@@ -15,6 +15,7 @@ import LeftPanel from './LeftPanel'
 import DavBody from './DavBody.jsx'
 
 import DirectoryProvider from './directory-context'
+import BatchProvider from './context/batch'
 
 export default function App(props) {
   return (
@@ -23,13 +24,15 @@ export default function App(props) {
         <Topbar />
         <Container maxWidth={false}>
           <Grid container>
-            <Grid item sx={{width: 240}}>
+            <Grid item sx={{ width: 240 }}>
               <LeftPanel
-                sx={{position: 'sticky',top:68.5}}
+                sx={{ position: 'sticky', top: 68.5 }}
               />
             </Grid>
             <Grid item xs>
-              <DavBody />
+              <BatchProvider>
+                <DavBody />
+              </BatchProvider>
             </Grid>
           </Grid>
         </Container>

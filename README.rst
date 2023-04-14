@@ -32,7 +32,7 @@ Install
 
 .. code:: bash
 
-   pip install django-webdav
+   pip install django-webdav-ui
 
 Update Settings.py
 ~~~~~~~~~~~~~~~~~~

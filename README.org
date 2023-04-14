@@ -22,7 +22,7 @@ File Manager like dropbox
 ** Quick Start
 *** Install
 #+BEGIN_SRC bash
-  pip install django-webdav
+  pip install django-webdav-ui
 #+END_SRC
 
 *** Update Settings.py

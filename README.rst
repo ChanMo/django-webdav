@@ -3,6 +3,11 @@ Django Webdav Client
 
 File Manager like dropbox
 
+.. figure:: ./webdav.jpeg
+   :alt: Screenshot
+
+   Screenshot
+
 Features
 --------
 

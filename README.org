@@ -2,6 +2,9 @@
 
 File Manager like dropbox
 
+#+CAPTION: Screenshot
+[[./webdav.jpeg]]
+
 ** Features
 - 文件管理
 - 多级目录

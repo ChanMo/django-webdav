@@ -133,3 +133,5 @@ dmypy.json
 node_modules/
 webdav/migrations/*
 !webdav/migrations/__init__.py
+
+demo/

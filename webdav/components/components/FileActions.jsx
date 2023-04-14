@@ -10,7 +10,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DownloadMenu from './DownloadMenu'
 import RenameMenu from './RenameMenu'
 import FileDeleteMenu from './FileDeleteMenu'
-import { pathname } from './utils'
+import { pathname } from './../utils/utils'
 
 export default function FileActions({file}) {
   const fullpath = file[1]

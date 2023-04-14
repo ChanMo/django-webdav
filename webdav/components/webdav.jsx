@@ -4,24 +4,24 @@
  */
 
 import React, { useRef, useState } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import Cookies from 'js-cookie'
 
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 
-import Topbar from './Topbar'
-import LeftPanel from './LeftPanel'
-import DavBody from './DavBody.jsx'
+// import Topbar from './components/Topbar'
+import LeftPanel from './components/LeftPanel'
+import DavBody from './components/DavBody.jsx'
 
-import DirectoryProvider from './directory-context'
+import DirectoryProvider from './context/directory-context'
 import BatchProvider from './context/batch'
 
 export default function App(props) {
   return (
     <DirectoryProvider initial={props.current}>
       <React.Fragment>
-        <Topbar />
+        {/* <Topbar /> */}
         <Container maxWidth={false}>
           <Grid container>
             <Grid item sx={{ width: 240 }}>
@@ -41,10 +41,8 @@ export default function App(props) {
   )
 }
 
-
-ReactDOM.render(
+createRoot(document.getElementById("innerApp")).render(
   <React.StrictMode>
     <App {...window.props} />
-  </React.StrictMode>,
-  document.getElementById("app")
-)
+  </React.StrictMode>
+);

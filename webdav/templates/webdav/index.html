@@ -1,5 +1,10 @@
 {% extends "webdav/base.html" %}
 {% load react_tags %}
+{% block content %}
+  <section class="section">
+    <div class="container" id="innerApp"></div>
+  </section>
+{% endblock %}
 {% block extra_js %}
   {% include "react/react_props.html" %}
   {% react_static "components/webdav.jsx" %}

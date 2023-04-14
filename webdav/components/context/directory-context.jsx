@@ -32,3 +32,8 @@ export default function DirectoryProvider({ initial='/', children }) {
     </DirectoryContext.Provider>
   );
 }
+
+
+export const useDirectory = () => {
+  return React.useContext(DirectoryContext);
+};

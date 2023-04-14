@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>
-      {% block title %}{{title|default:"Demo Site"}}{% endblock %}
+      {% block title %}{{title|default:"Django Webdav"}}{% endblock %}
     </title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,19 @@
   </head>
 
   <body class="{% block body_class %}{% endblock %}">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+	<a class="navbar-item" href="/">
+	  <span class="has-text-weight-bold">Django Webdav</span>
+	</a>
+	<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	  <span aria-hidden="true"></span>
+	  <span aria-hidden="true"></span>
+	  <span aria-hidden="true"></span>
+	</a>
+      </div>
+    </nav>
+
     <div id="app">
       {% block content %}{% endblock %}
     </div>

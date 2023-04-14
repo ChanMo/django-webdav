@@ -12,8 +12,8 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import { DirectoryContext } from './directory-context'
-import { pathname } from './utils'
+import { DirectoryContext } from './../context/directory-context'
+import { pathname } from './../utils/utils'
 
 
 

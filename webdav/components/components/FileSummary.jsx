@@ -4,7 +4,7 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { formatBytes } from './utils'
+import { formatBytes } from './../utils/utils'
 
 
 export default function FileSummary({data, ...props}) {

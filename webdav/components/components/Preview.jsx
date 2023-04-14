@@ -1,16 +1,18 @@
 /**
  * 文件预览
  */
-import React from 'react'
-import Dialog from '@mui/material/Dialog'
-import DialogTitle from '@mui/material/DialogTitle'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid'
-import FilePreview from './FilePreview'
-import Sidebar from './Sidebar'
-import { pathname } from './utils'
+import React from 'react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Grid,
+} from '@mui/material';
+import FilePreview from './FilePreview';
+import Sidebar from './Sidebar';
+import { pathname } from './../utils/utils';
 
 
 export default function PreviewDialog({file, open, onClose}) {
@@ -36,5 +38,5 @@ export default function PreviewDialog({file, open, onClose}) {
         <Button onClick={onClose}>关闭</Button>
       </DialogActions>
     </Dialog>
-  )
+  );
 }

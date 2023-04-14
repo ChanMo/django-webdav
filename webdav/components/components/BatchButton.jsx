@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '@mui/material/Button'
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { BatchContext } from './context/batch';
+import { BatchContext } from './../context/batch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DownloadIcon from '@mui/icons-material/Download';
 

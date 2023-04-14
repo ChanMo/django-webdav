@@ -6,8 +6,8 @@ import FolderIcon from '@mui/icons-material/Folder';
 import ImageIcon from '@mui/icons-material/Image';
 import FilePresentIcon from '@mui/icons-material/FilePresent';
 import Preview from './Preview'
-import { DirectoryContext } from './directory-context'
-import { pathname } from './utils'
+import { DirectoryContext } from './../context/directory-context'
+import { pathname } from './../utils/utils'
 import { Box } from '@mui/system';
 
 

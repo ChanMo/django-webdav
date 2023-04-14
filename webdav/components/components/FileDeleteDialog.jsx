@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
-import { DirectoryContext } from './directory-context'
+import { DirectoryContext } from './../context/directory-context'
 
 export default function FileDeleteDialog(props) {
   const { file, open, onClose, onDelete } = props
